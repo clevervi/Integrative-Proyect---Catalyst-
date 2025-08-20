@@ -13,3 +13,5 @@
 - Hacer funcionar el db.json para que las fotod de las personas se guarden ahí y se puedan colocar automaticamente el la foto de su perfil y poner a funcionar la opcion de editar por si las personas no les gusta su foto del perfil
 - lo de las capacitaciones no estoy seguro si lo dejamos lo vamos a colocar a votacion pa ver si lo dejamos o lo quitamos
 - quitar la foto que esta de prueba en la parte de perfil
+
+-este es un cambio
