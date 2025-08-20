@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empleos en Tecnología - Catalyst</title>
+    <meta name="description" content="Busca y encuentra los mejores empleos en tecnología en Colombia. Filtra por ubicación, salario, modalidad y más.">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" as="font" crossorigin>
+    <link rel="shortcut icon" href="/img/image.png" type="image/x-icon">
+    
+    <!-- Hojas de estilo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+                <img src="/img/image.png" alt="Catalyst" height="40" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html"><i class="fas fa-home me-1"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="empleos.html"><i class="fas fa-briefcase me-1"></i> Empleos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="capacitaciones.html"><i class="fas fa-graduation-cap me-1"></i> Capacitaciones</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> Mi cuenta
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="perfil.html"><i class="fas fa-user me-2"></i> Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-heart me-2"></i> Favoritos</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                    <a href="publicar-empleo.html" class="btn btn-accent"><i class="fas fa-plus me-1"></i> add resume</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="py-5 mt-4">
+        <div class="container">
+            <div class="row">
+                <!-- Filtros mejorados -->
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card filter-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-4"><i class="fas fa-sliders-h me-2"></i> Filtros Avanzados</h5>
+                            
+                            <form id="job-filters">
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-search me-2"></i> Palabras clave</h6>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="query" placeholder="React, Python, etc.">
+                                        <button class="btn btn-outline-primary" type="button"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Ubicación</h6>
+                                    <select class="form-select mb-2" name="location">
+                                        <option selected>Todas las ubicaciones</option>
+                                        <option>Bogotá</option>
+                                        <option>Medellín</option>
+                                        <option>Cali</option>
+                                        <option>Barranquilla</option>
+                                        <option>Remoto</option>
+                                    </select>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="relocation">
+                                        <label class="form-check-label" for="relocation">Disponible para reubicación</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-code me-2"></i> Área</h6>
+                                    <div class="d-flex flex-wrap">
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="frontend">Frontend</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="backend">Backend</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="fullstack">Fullstack</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="dataScience">Data Science</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="devops">DevOps</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="uxui">UX/UI</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="qa">QA</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-star me-2"></i> Nivel</h6>
+                                    <div class="d-flex flex-wrap">
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="trainee">Trainee</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="junior">Junior</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="semi-senior">Semi-Senior</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="senior">Senior</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="architect">Architect</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-laptop-house me-2"></i> Modalidad</h6>
+                                    <div class="d-flex flex-wrap">
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="presencial">Presencial</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="remoto">Remoto</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="hibrido">Híbrido</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-file-contract me-2"></i> Tipo de contrato</h6>
+                                    <div class="d-flex flex-wrap">
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="indefinido">Indefinido</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="termino-fijo">Término fijo</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="prestacion-servicios">Prestación servicios</button>
+                                        <button type="button" class="filter-btn btn btn-outline-primary btn-sm mb-2 me-2" data-filter="freelance">Freelance</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="filter-section">
+                                    <h6 class="mb-3"><i class="fas fa-dollar-sign me-2"></i> Salario</h6>
+                                    <div class="range-slider mb-3">
+                                        <div id="salary-range" class="mb-3"></div>
+                                        <div class="d-flex justify-content-between">
+                                            <span id="salary-min">$2M COP</span>
+                                            <span id="salary-max">$15M COP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-grid gap-2 mt-4">
+                                    <button class="btn btn-accent" type="submit" id="apply-filters-btn">
+                                        <i class="fas fa-filter me-1"></i> Aplicar Filtros
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="reset">
+                                        <i class="fas fa-undo me-1"></i> Limpiar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lista de empleos mejorada -->
+                <div class="col-md-8 col-lg-9">
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                        <h2 class="mb-3 mb-md-0">Ofertas de Empleo</h2>
+                        <div class="d-flex align-items-center">
+                            <span class="me-3">Mostrando <strong>12 de 150</strong> empleos</span>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown">
+                                    <i class="fas fa-sort me-1"></i> Ordenar por
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item active" href="#">Más recientes</a></li>
+                                    <li><a class="dropdown-item" href="#">Mejor pagados</a></li>
+                                    <li><a class="dropdown-item" href="#">Más relevantes</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Cercanos a mi</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info d-flex align-items-center">
+                        <i class="fas fa-info-circle me-3 fs-4"></i>
+                        <div>
+                            <strong>Consejo profesional:</strong> Completa tu perfil para aumentar tus posibilidades en un 70%
+                            <a href="perfil.html" class="alert-link ms-2">Completar ahora</a>
+                        </div>
+                    </div>
+                    
+                    <div class="job-list">
+                        <!-- Tarjeta de empleo 1 -->
+                        <div class="job-card mb-4 position-relative">
+                            <span class="new-badge">NUEVO</span>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h3 class="job-title">Desarrollador Backend Senior</h3>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <img src="" alt="Innovatech Solutions" class="rounded-circle me-2" width="24" loading="lazy">
+                                            <p class="company-name mb-0">Innovatech Solutions</p>
+                                            <span class="verified-badge ms-2" data-bs-toggle="tooltip" title="Empresa verificada">
+                                                <i class="fas fa-check-circle text-primary"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button class="favorite-btn active"><i class="fas fa-heart"></i></button>
+                                </div>
+                                
+                                <div class="job-meta mb-3">
+                                    <span class="badge bg-primary-light text-primary me-2">
+                                        <i class="fas fa-laptop-house me-1"></i> Remoto
+                                    </span>
+                                    <span class="badge bg-success-light text-success me-2">
+                                        <i class="fas fa-star me-1"></i> Senior
+                                    </span>
+                                    <span class="badge bg-info-light text-info">
+                                        <i class="fas fa-clock me-1"></i> Tiempo completo
+                                    </span>
+                                </div>
+                                
+                                <p class="job-description">
+                                    Buscamos desarrollador backend con experiencia en Node.js, TypeScript y arquitecturas de microservicios para unirse a nuestro equipo de desarrollo de plataforma SaaS. Trabajarás con tecnologías como Kubernetes, AWS y GraphQL en un entorno ágil.
+                                </p>
+                                
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mt-auto">
+                                    <div class="mb-2 mb-sm-0">
+                                        <span class="text-muted small me-3">
+                                            <i class="fas fa-map-marker-alt me-1"></i> Bogotá / Remoto
+                                        </span>
+                                        <span class="text-muted small me-3">
+                                            <i class="fas fa-money-bill-wave me-1"></i> $8M - $12M COP
+                                        </span>
+                                        <span class="text-muted small">
+                                            <i class="fas fa-calendar-alt me-1"></i> Publicado hace 2 días
+                                        </span>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="detalle-empleo.html" class="btn btn-sm btn-accent me-2">
+                                            <i class="fas fa-eye me-1"></i> Ver detalles
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-paper-plane me-1"></i> Postularse
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tarjeta de empleo 2 -->
+                        <div class="job-card mb-4 position-relative">
+                            <span class="featured-badge">Destacado</span>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h3 class="job-title">Ingeniero de Datos</h3>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <img src="assets/img/companies/data-insights.webp" alt="Data Insights" class="rounded-circle me-2" width="24" loading="lazy">
+                                            <p class="company-name mb-0">Data Insights</p>
+                                            <span class="verified-badge ms-2" data-bs-toggle="tooltip" title="Empresa verificada">
+                                                <i class="fas fa-check-circle text-primary"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                                </div>
+                                
+                                <div class="job-meta mb-3">
+                                    <span class="badge bg-primary-light text-primary me-2">
+                                        <i class="fas fa-building me-1"></i> Presencial
+                                    </span>
+                                    <span class="badge bg-success-light text-success me-2">
+                                        <i class="fas fa-star-half-alt me-1"></i> Semi-Senior
+                                    </span>
+                                    <span class="badge bg-info-light text-info">
+                                        <i class="fas fa-clock me-1"></i> Tiempo completo
+                                    </span>
+                                </div>
+                                
+                                <p class="job-description">
+                                    Buscamos ingeniero de datos con experiencia en Python, SQL y ETL para diseñar y mantener nuestros pipelines de datos. Conocimiento en Spark, Airflow y AWS será un plus.
+                                </p>
+                                
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mt-auto">
+                                    <div class="mb-2 mb-sm-0">
+                                        <span class="text-muted small me-3">
+                                            <i class="fas fa-map-marker-alt me-1"></i> Medellín
+                                        </span>
+                                        <span class="text-muted small me-3">
+                                            <i class="fas fa-money-bill-wave me-1"></i> $6M - $9M COP
+                                        </span>
+                                        <span class="text-muted small">
+                                            <i class="fas fa-calendar-alt me-1"></i> Publicado hace 1 semana
+                                        </span>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="detalle-empleo.html" class="btn btn-sm btn-accent me-2">
+                                            <i class="fas fa-eye me-1"></i> Ver detalles
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-paper-plane me-1"></i> Postularse
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tarjeta de empleo 3 -->
+                        <div class="job-card mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <h3 class="job-title">Arquitecto de Soluciones Cloud</h3>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <img src="assets/img/companies/cloud-tech.webp" alt="Cloud Technologies" class="rounded-circle me-2" width="24" loading="lazy">
+                                            <p class="company-name mb-0">Cloud Technologies</p>
+                                        </div>
+                                    </div>
+                                    <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                                </div>
+                                
+                                <div class="job-meta mb-3">
+                                    <span class="badge bg-primary-light text-primary me-2">
+                                        <i class="fas fa-laptop-house me-1"></i> Híbrido
+                                    </span>
+                                    <span class="badge bg-success-light text-success me-2">
+                                        <i class="fas fa-crown me-1"></i> Architect
+                                    </span>
+                                    <span class="badge bg-info-light text-info">
+                                        <i class="fas fa-clock me-1"></i> Tiempo completo
+                                    </span>
+                                </div>
+                                
+                                <p class="job-description">
+                                    Buscamos arquitecto de soluciones con experiencia en diseño de sistemas escalables en AWS o Azure. Deberás liderar el diseño técnico de nuestros proyectos más importantes y guiar al equipo de desarrollo.
+                                </p>
+                                
+                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mt-auto">
+                                    <div class="mb-2 mb-sm-0">
+                                        <span class="text-muted small me-3">
+                                            <i class="fas fa-map-marker-alt me-1"></i> Bogotá
+                                        </span>
+                                        <span class="text-muted small me-3">
+                                            <i class="fas fa-money-bill-wave me-1"></i> $12M - $18M COP
+                                        </span>
+                                        <span class="text-muted small">
+                                            <i class="fas fa-calendar-alt me-1"></i> Publicado hace 3 días
+                                        </span>
+                                    </div>
+                                    <div class="d-flex">
+                                        <a href="detalle-empleo.html" class="btn btn-sm btn-accent me-2">
+                                            <i class="fas fa-eye me-1"></i> Ver detalles
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-paper-plane me-1"></i> Postularse
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Más tarjetas de empleo... -->
+                    </div>
+                    
+                    <!-- Paginación mejorada -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center mt-5">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-5 bg-primary-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div id="logo" class="footer-brand mb-4">
+                        <img src="/img/image.png" alt="Catalyst" height="40" loading="lazy">
+                    </div>
+                    <p class="mb-4">
+                        Catalyst es la plataforma líder en Colombia para conectar a profesionales de tecnología con las mejores oportunidades laborales.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                    <h5 class="footer-title">Para profesionales</h5>
+                    <ul class="footer-links">
+                        <li><a href="/pages/empleos.html">Buscar empleos</a></li>
+                        <li><a href="/pages/perfil.html">Mi perfil</a></li>
+                        <li><a href="#">Alertas de empleo</a></li>
+                        <li><a href="capacitaciones.html">Capacitaciones</a></li>
+                        <li><a href="#">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <h5 class="footer-title">Suscríbete a nuestro boletín</h5>
+                    <p class="mb-3">Recibe las últimas ofertas de empleo y noticias del sector tech directamente en tu correo.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu correo electrónico" aria-label="Email" required>
+                            <button class="btn btn-accent" type="submit">Suscribirse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-primary-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0 small">&copy; 2024 Catalyst. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white small me-3">Términos y condiciones</a>
+                    <a href="#" class="text-white small me-3">Política de privacidad</a>
+                    <a href="#" class="text-white small">Cookies</a>
+                </div>
+            </div>
+        </div>r
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Inicializar tooltips
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+            
+            // Efecto de navbar al hacer scroll
+            $(window).scroll(function() {
+                const navbar = $('.navbar');
+                if ($(this).scrollTop() > 50) {
+                    navbar.addClass('scrolled');
+                } else {
+                    navbar.removeClass('scrolled');
+                }
+            });
+            
+            // Filtros interactivos
+            $('.filter-btn').click(function() {
+                $(this).toggleClass('btn-primary btn-outline-primary');
+            });
+            
+            // Slider de salario
+            const salarySlider = document.getElementById('salary-range');
+            if (salarySlider) {
+                noUiSlider.create(salarySlider, {
+                    start: [2000000, 10000000],
+                    connect: true,
+                    range: {
+                        'min': 2000000,
+                        'max': 15000000
+                    },
+                    step: 500000,
+                    format: {
+                        to: function(value) {
+                            return '$' + (value / 1000000) + 'M COP';
+                        },
+                        from: function(value) {
+                            return value.replace('$', '').replace('M COP', '') * 1000000;
+                        }
+                    }
+                });
+                
+                salarySlider.noUiSlider.on('update', function(values, handle) {
+                    if (handle) {
+                        $('#salary-max').text(values[handle]);
+                    } else {
+                        $('#salary-min').text(values[handle]);
+                    }
+                });
+            }
+            
+            // Animación de carga para tarjetas
+            $('.job-card').each(function(index) {
+                $(this).css('animation-delay', (index * 0.1) + 's');
+            });
+        });
+    </script>
+</body>
+</html>

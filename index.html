@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalyst - Oportunidades en Tecnología</title>
+    <meta name="description" content="Encuentra los mejores empleos en tecnología en Colombia. Conectamos talento tech con las empresas más innovadoras.">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="shortcut icon" href="img/image.png" type="image/x-icon">
+    <link rel="preload" href="https://fonts.cdnfonts.com/css/sf-pro-display" as="font" crossorigin>
+    
+    <!-- Hojas de estilo -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/image.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navbar mejorada -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-dark" aria-label="Navegación principal">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/image.png" alt="Catalyst" height="40" loading="lazy">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/empleos.html"><i class="fas fa-briefcase me-1"></i> Empleos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/capacitaciones.html"><i class="fas fa-graduation-cap me-1"></i> Capacitaciones</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center" id="auth-buttons">
+                    <!-- Los botones de autenticación se cargarán dinámicamente -->
+                    <a href="#" class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <i class="fas fa-sign-in-alt me-1"></i> Ingresar
+                    </a>
+                    <a href="#" class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <i class="fas fa-user-plus me-1"></i> Registrarse
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modales de autenticación -->
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-accent">Ingresar</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>¿No tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Regístrate</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Crear Cuenta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="registerPassword" required minlength="6">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="confirmPassword" required minlength="6">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-accent">Registrarse</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p>¿Ya tienes cuenta? <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Inicia sesión</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Banner mejorado -->
+    <header class="hero-banner">
+        <div class="container">
+            <div class="hero-content animate-fade-in-up">
+                <h1>Encuentra tu próximo empleo en tecnología</h1>
+                <p class="lead">Conectamos a los mejores talentos tecnológicos con las empresas más innovadoras de Colombia</p>
+
+                <div class="search-box">
+                    <form id="hero-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="query" placeholder="Puesto, habilidades o empresa..." aria-label="Buscar empleos">
+                            <select class="form-select" name="location">
+                                <option selected>Todas las ubicaciones</option>
+                                <option>Bogotá</option>
+                                <option>Medellín</option>
+                                <option>Cali</option>
+                                <option>Barranquilla</option>
+                                <option>Remoto</option>
+                            </select>
+                            <button class="btn btn-accent" type="submit">
+                                <i class="fas fa-search me-1"></i> Buscar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de categorías populares -->
+    <section class="categories-section py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Explora por categoría</h2>
+                <p class="section-subtitle">Encuentra empleos en las áreas más demandadas de tecnología</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <a href="pages/empleos.html?category=frontend" class="category-card">
+                        <div class="icon-circle bg-primary-light">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h5>Frontend</h5>
+                        <span class="badge bg-primary">142 empleos Disponibles</span>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <a href="pages/empleos.html?category=backend" class="category-card">
+                        <div class="icon-circle bg-success-light">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h5>Backend</h5>
+                        <span class="badge bg-success">98 Vacantes disponibles</span>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <a href="pages/empleos.html?category=fullstack" class="category-card">
+                        <div class="icon-circle bg-info-light">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5>Fullstack</h5>
+                        <span class="badge bg-info">76 Vacantes disponibles</span>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <a href="pages/empleos.html?category=data-science" class="category-card">
+                        <div class="icon-circle bg-warning-light">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5>Data Science</h5>
+                        <span class="badge bg-warning">54 Vacantes disponibles</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Empleos destacados con diseño mejorado -->
+    <section class="featured-jobs py-5">
+        <div class="container">
+            <div class="section-header d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+                <div class="mb-3 mb-md-0">
+                    <h2 class="section-title">Empleos Destacados</h2>
+                    <p class="section-subtitle mb-0">Las mejores oportunidades seleccionadas para ti</p>
+                </div>
+                <a href="pages/empleos.html" class="btn btn-outline-primary">
+                    Ver todos <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            
+            <div class="row job-list">
+                <!-- Tarjeta de empleo destacado 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="job-card h-100 position-relative" data-job-id="1">
+                        <span class="featured-badge">Destacado</span>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3 class="job-title">Ingeniero DevOps</h3>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="img/DevOpsLoop.webp" alt="Tech Solutions Inc." class="rounded-circle me-2" width="24" loading="lazy">
+                                        <p class="company-name mb-0">Tech Solutions Inc.</p>
+                                        <span class="verified-badge ms-2" data-bs-toggle="tooltip" title="Empresa verificada">
+                                            <i class="fas fa-check-circle text-primary"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-primary-light text-primary me-2">
+                                    <i class="fas fa-laptop-house me-1"></i> Remoto
+                                </span>
+                                <span class="badge bg-success-light text-success me-2">
+                                    <i class="fas fa-star me-1"></i> Senior
+                                </span>
+                                <span class="badge bg-info-light text-info">
+                                    <i class="fas fa-clock me-1"></i> Tiempo completo
+                                </span>
+                            </div>
+                            
+                            <p class="job-description">
+                                Buscamos ingeniero DevOps con experiencia en AWS, Kubernetes y Terraform para automatizar nuestros procesos de despliegue y mejorar nuestra infraestructura en la nube.
+                            </p>
+                            
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mt-auto">
+                                <div class="mb-2 mb-sm-0">
+                                    <span class="text-muted small">
+                                        <i class="fas fa-map-marker-alt me-1"></i> Bogotá / Remoto
+                                    </span>
+                                </div>
+                                <a href="pages/detalle-empleo.html?id=1" class="btn btn-sm btn-accent">Ver detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta de empleo destacado 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="job-card h-100 position-relative" data-job-id="2">
+                        <span class="new-badge">NUEVO</span>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3 class="job-title">Desarrollador React</h3>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="img/reactjs-inner.svg" alt="Digital Creative" class="rounded-circle me-2" width="24" loading="lazy">
+                                        <p class="company-name mb-0">Digital Creative</p>
+                                    </div>
+                                </div>
+                                <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-primary-light text-primary me-2">
+                                    <i class="fas fa-laptop-house me-1"></i> Híbrido
+                                </span>
+                                <span class="badge bg-success-light text-success me-2">
+                                    <i class="fas fa-star-half-alt me-1"></i> Semi-Senior
+                                </span>
+                                <span class="badge bg-info-light text-info">
+                                    <i class="fas fa-clock me-1"></i> Tiempo completo
+                                </span>
+                            </div>
+                            
+                            <p class="job-description">
+                                Buscamos desarrollador frontend con experiencia en React, TypeScript y Next.js para trabajar en proyectos innovadores para clientes internacionales.
+                            </p>
+                            
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mt-auto">
+                                <div class="mb-2 mb-sm-0">
+                                    <span class="text-muted small">
+                                        <i class="fas fa-map-marker-alt me-1"></i> Medellín
+                                    </span>
+                                </div>
+                                <a href="pages/detalle-empleo.html?id=2" class="btn btn-sm btn-accent">Ver detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tarjeta de empleo destacado 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="job-card h-100" data-job-id="3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h3 class="job-title">Arquitecto de Soluciones</h3>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <img src="/img/arquitecto.png" alt="Cloud Technologies" class="rounded-circle me-2" width="24" loading="lazy">
+                                        <p class="company-name mb-0">Cloud Technologies</p>
+                                        <span class="verified-badge ms-2" data-bs-toggle="tooltip" title="Empresa verificada">
+                                            <i class="fas fa-check-circle text-primary"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <button class="favorite-btn"><i class="far fa-heart"></i></button>
+                            </div>
+                            
+                            <div class="job-meta mb-3">
+                                <span class="badge bg-primary-light text-primary me-2">
+                                    <i class="fas fa-building me-1"></i> Presencial
+                                </span>
+                                <span class="badge bg-success-light text-success me-2">
+                                    <i class="fas fa-crown me-1"></i> Architect
+                                </span>
+                                <span class="badge bg-info-light text-info">
+                                    <i class="fas fa-clock me-1"></i> Tiempo completo
+                                </span>
+                            </div>
+                            
+                            <p class="job-description">
+                                Buscamos arquitecto de soluciones con experiencia en diseño de sistemas escalables en la nube para liderar nuestros proyectos más importantes.
+                            </p>
+                            
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mt-auto">
+                                <div class="mb-2 mb-sm-0">
+                                    <span class="text-muted small">
+                                        <i class="fas fa-map-marker-alt me-1"></i> Bogotá
+                                    </span>
+                                </div>
+                                <a href="pages/detalle-empleo.html?id=3" class="btn btn-sm btn-accent">Ver detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de estadísticas -->
+    <section class="stats-section py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <h3 class="stat-number">5,000+</h3>
+                        <p class="stat-label">Empleos publicados</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="stat-item">
+                        <h3 class="stat-number">1,200+</h3>
+                        <p class="stat-label">Empresas confían en nosotros</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-item">
+                        <h3 class="stat-number">15,000+</h3>
+                        <p class="stat-label">Profesionales registrados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de testimonios mejorada -->
+    <section class="testimonials-section py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">Lo que dicen nuestros usuarios</h2>
+                <p class="section-subtitle">Historias de éxito de profesionales</p>
+            </div>
+            
+            <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-card glass-effect p-4 rounded text-center mx-auto">
+                            <div class="testimonial-rating mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="mb-4">"Encontré mi empleo soñado en solo 2 semanas. La plataforma es muy intuitiva y las ofertas son de alta calidad. El proceso fue rápido y sin complicaciones."</p>
+                            <div class="testimonial-author">
+                                <img src="img/ft ana.jpg" alt="Ana García" class="rounded-circle mb-2" width="80" loading="lazy">
+                                <h6 class="mb-0">Ana García</h6>
+                                <p class="text-muted small">Desarrolladora Backend en Tech Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-card glass-effect p-4 rounded text-center mx-auto">
+                            <div class="testimonial-rating mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="mb-4">"El soporte al cliente fue excepcional. Me ayudaron a preparar mi CV y encontrar una posición que se ajusta perfectamente a mi perfil y aspiraciones salariales."</p>
+                            <div class="testimonial-author">
+                                <img src="img/ft carlos.jpeg" alt="Carlos Rodríguez" class="rounded-circle mb-2" width="80" loading="lazy">
+                                <h6 class="mb-0">Carlos Rodríguez</h6>
+                                <p class="text-muted small">Analista de Datos en Data Insights</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección CTA para empresas -->
+    <section class="cta-section py-5 bg-accent text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8 mb-4 mb-md-0">
+                    <h2 class="mb-3">¿Estas buscando cambiar tu vida, que esperas para trabajar con nosotros?</h2>
+                    <p class="mb-0">Publica tu hoja de vida y encuentra el trabajo perfecto para ti</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <a href="pages/publicar-cv.html" class="btn btn-light btn-lg">add resume<i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <!-- Footer mejorado -->
+    <footer class="footer py-5 bg-primary-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div id="logo" class="footer-brand mb-4">
+                        <img src="img/image.png" alt="Catalyst" loading="lazy">
+                    </div>
+                    <p class="mb-4">
+                        Catalyst es la plataforma líder en Colombia para conectar a profesionales de tecnología con las mejores oportunidades laborales.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-2 mb-4 mb-md-0">
+                    <h5 class="footer-title">Para miembros</h5>
+                    <ul class="footer-links">
+                        <li><a href="pages/empleos.html">Buscar empleos</a></li>
+                        <li><a href="pages/perfil.html">Mi perfil</a></li>
+                        <li><a href="#">Alertas de empleo</a></li>
+                        <li><a href="pages/capacitaciones.html">Capacitaciones</a></li>
+                        <li><a href="#">Recursos</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <h5 class="footer-title">Suscríbete a nuestro boletín</h5>
+                    <p class="mb-3">Recibe las últimas ofertas de empleo y noticias del sector tech directamente en tu correo.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu correo electrónico" aria-label="Email" required>
+                            <button class="btn btn-accent" type="submit">Suscribirse</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4 bg-primary-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0 small">&copy; 2024 Catalyst. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white small me-3">Términos y condiciones</a>
+                    <a href="#" class="text-white small me-3">Política de privacidad</a>
+                    <a href="#" class="text-white small">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script>
+        // Inicializar tooltips
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+            
+            // Efecto de navbar al hacer scroll
+            $(window).scroll(function() {
+                const navbar = $('.navbar');
+                if ($(this).scrollTop() > 50) {
+                    navbar.addClass('scrolled');
+                } else {
+                    navbar.removeClass('scrolled');
+                }
+            });
+            
+            // Animación de carga para elementos
+            $('.animate-fade-in-up, .job-card').each(function(index) {
+                $(this).css('animation-delay', (index * 0.1) + 's');
+            });
+            
+            // Validación del formulario de búsqueda
+            $('#hero-search').submit(function(e) {
+                e.preventDefault();
+                const query = $(this).find('input[name="query"]').val().trim();
+                if (query.length < 3) {
+                    alert('Por favor ingresa al menos 3 caracteres para buscar');
+                    return false;
+                }
+                window.location.href = `pages/empleos.html?search=${encodeURIComponent(query)}`;
+            });
+        });
+    </script>
+</body>
+</html>
