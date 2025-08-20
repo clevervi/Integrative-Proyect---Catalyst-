@@ -1,0 +1,15 @@
+{
+  "name": "formulario-empleo",
+  "version": "1.0.0",
+  "description": "- Corregir el header de la pagina principal solo la parte en donde dice mi cuenta \r - Poner a funcionar el buscardor\r - Poner a funcionar los exploradores por categorias\r - En empleos Destacados poner a funcioanar el ver detalles \r - Cambiar eso ya que no tiene nada que ver con nuestra empresa dejar el diseño solo cambiar lo que esta dentro es decir la información\r ![alt text](image.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
