@@ -8,6 +8,7 @@
 - Hacer funcionar el db.json para que las fotod de las personas se guarden ahí y se puedan colocar automaticamente el la foto de su perfil y poner a funcionar la opcion de editar por si las personas no les gusta su foto del perfil
 - lo de las capacitaciones no estoy seguro si lo dejamos lo vamos a colocar a votacion pa ver si lo dejamos o lo quitamos
 - quitar la foto que esta de prueba en la parte de perfil
+<<<<<<< HEAD
 =======
 ## 📖 Descripción general
 **Catalyst** es un proyecto integrador orientado al desarrollo de una plataforma web de gestión de empleos y talento humano.  
@@ -127,3 +128,7 @@ Consulta el archivo [LICENSE](LICENSE) para más información.
 
 ✨ *Catalyst: conectando talento con oportunidades.*
 >>>>>>> Stashed changes
+=======
+
+-este es un cambio
+>>>>>>> 76e7b661f754cde319297100b77ba5b9ed1b2540
