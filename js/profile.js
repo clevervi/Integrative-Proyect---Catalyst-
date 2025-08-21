@@ -1,40 +1,28 @@
-import { updateAuthUI } from '../auth.js';
+// profile.js - Versión mejorada
+import { updateAuthUI, checkAuth } from '../auth.js';
 import { apiRequest, fetchUserProfile, updateUserProfile } from '../api.js';
 import { showToast } from '../ui.js';
 
 // Inicializar la página de perfil
 document.addEventListener('DOMContentLoaded', async () => {
     // Verificar autenticación
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-        window.location.href = '../index.html';
-        return;
-    }
-
-    // Actualizar UI de autenticación
+    if (!checkAuth()) return;
+    
     updateAuthUI();
-
-    try {
-        // Cargar datos del perfil
-        await loadProfileData();
-        
-        // Configurar event listeners
-        setupEventListeners();
-    } catch (error) {
-        console.error('Error al cargar el perfil:', error);
-        showToast('Error al cargar los datos del perfil', 'error');
-    }
+    await loadProfileData();
+    setupEventListeners();
 });
 
 // Cargar datos del perfil
 async function loadProfileData() {
     try {
+        // Intentar cargar de la API primero
         const profileData = await fetchUserProfile();
         populateProfile(profileData);
     } catch (error) {
-        console.error('Error fetching profile:', error);
-        // Mostrar datos de ejemplo si la API no está disponible
-        showSampleProfile();
+        // Fallback a datos locales
+        const localData = JSON.parse(localStorage.getItem('userData') || '{}');
+        populateProfile(localData);
     }
 }
 
@@ -119,47 +107,17 @@ function populateProfile(data) {
             </div>
         `;
     }
-}
-
-// Mostrar perfil de ejemplo
-function showSampleProfile() {
-    const sampleData = {
-        firstName: 'Juan',
-        lastName: 'Pérez',
-        email: 'juan.perez@example.com',
-        title: 'Desarrollador Full Stack',
-        skills: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'HTML/CSS'],
-        experience: [
-            {
-                position: 'Desarrollador Full Stack',
-                company: 'Tech Solutions Inc.',
-                location: 'Bogotá',
-                startDate: '2020-01-01',
-                endDate: null,
-                current: true,
-                description: 'Desarrollo de aplicaciones web usando React, Node.js y MongoDB. Liderazgo de equipo de desarrollo.'
-            }
-        ],
-        education: [
-            {
-                degree: 'Ingeniería de Sistemas',
-                institution: 'Universidad Nacional de Colombia',
-                location: 'Bogotá',
-                startDate: '2013-01-01',
-                endDate: '2018-12-01',
-                description: ''
-            }
-        ],
-        documents: [
-            {
-                name: 'CV_Juan_Perez_2023.pdf',
-                type: 'application/pdf',
-                uploadDate: '2023-10-15'
-            }
-        ]
-    };
     
-    populateProfile(sampleData);
+    // Llenar formulario de edición con datos actuales
+    if (data.firstName) document.getElementById('editFirstName').value = data.firstName;
+    if (data.lastName) document.getElementById('editLastName').value = data.lastName;
+    if (data.email) document.getElementById('editEmail').value = data.email;
+    if (data.phone) document.getElementById('editPhone').value = data.phone;
+    if (data.location) document.getElementById('editLocation').value = data.location;
+    if (data.birthdate) document.getElementById('editBirthdate').value = data.birthdate;
+    if (data.gender) document.getElementById('editGender').value = data.gender;
+    if (data.title) document.getElementById('editTitle').value = data.title;
+    if (data.bio) document.getElementById('editBio').value = data.bio;
 }
 
 // Configurar event listeners
@@ -189,14 +147,26 @@ async function saveProfile() {
             bio: document.getElementById('editBio').value
         };
         
-        await updateUserProfile(formData);
-        showToast('Perfil actualizado correctamente');
+        // Actualizar en localStorage inmediatamente para mejor experiencia de usuario
+        const currentUserData = JSON.parse(localStorage.getItem('userData') || '{}');
+        const updatedUserData = { ...currentUserData, ...formData };
+        localStorage.setItem('userData', JSON.stringify(updatedUserData));
+        
+        // Intentar guardar en la API
+        try {
+            await updateUserProfile(formData);
+            showToast('Perfil actualizado correctamente');
+        } catch (error) {
+            // Si falla la API, al menos tenemos los datos en localStorage
+            showToast('Perfil guardado localmente (modo offline)');
+        }
         
         // Recargar datos
         await loadProfileData();
         
         // Cerrar modal
-        bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
+        if (modal) modal.hide();
     } catch (error) {
         console.error('Error saving profile:', error);
         showToast('Error al guardar el perfil', 'error');
@@ -224,6 +194,19 @@ function addSkill() {
         skillElement.querySelector('.btn-close').addEventListener('click', function() {
             skillElement.remove();
         });
+        
+        // Actualizar habilidades en el perfil
+        const currentUserData = JSON.parse(localStorage.getItem('userData') || '{}');
+        if (!currentUserData.skills) currentUserData.skills = [];
+        currentUserData.skills.push(skill);
+        localStorage.setItem('userData', JSON.stringify(currentUserData));
+        
+        // Actualizar visualización de habilidades
+        const skillsContainer = document.getElementById('skills-container');
+        const skillBadge = document.createElement('span');
+        skillBadge.className = 'badge bg-primary me-1 mb-1';
+        skillBadge.textContent = skill;
+        skillsContainer.appendChild(skillBadge);
     }
 }
 
@@ -236,11 +219,15 @@ function changeProfilePicture() {
     input.onchange = async (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Aquí iría la lógica para subir la imagen
-            // Por ahora, mostramos una preview
+            // Mostrar una preview
             const reader = new FileReader();
             reader.onload = function(e) {
                 document.getElementById('profile-picture').src = e.target.result;
+                
+                // Guardar en localStorage como URL de datos
+                const currentUserData = JSON.parse(localStorage.getItem('userData') || '{}');
+                currentUserData.profilePicture = e.target.result;
+                localStorage.setItem('userData', JSON.stringify(currentUserData));
             };
             reader.readAsDataURL(file);
             

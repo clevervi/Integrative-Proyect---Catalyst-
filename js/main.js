@@ -1,7 +1,7 @@
 import { handleAuth, updateAuthUI } from './auth.js';
 import { initJobSearch, renderJobList, handleFavorites } from './jobs.js';
 import { initUIFunctions, showToast } from './ui.js';
-import { fetchJobs } from './api.js';
+import { fetchJobs, applyToJob } from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Inicializar autenticación
@@ -25,6 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar favoritos
     handleFavorites();
+
+    // Manejar aplicación a empleos desde el modal
+    document.addEventListener('click', async (e) => {
+        if (e.target.id === 'applyJobBtn') {
+            const jobId = document.getElementById('applyJobBtn').dataset.jobId;
+            try {
+                await applyToJob(jobId);
+                showToast('¡Postulación exitosa!', 'success');
+                const modal = bootstrap.Modal.getInstance(document.getElementById('jobDetailsModal'));
+                modal.hide();
+            } catch (error) {
+                showToast('Error al aplicar al empleo: ' + error.message, 'error');
+            }
+        }
+    });
 });
 
 async function loadInitialJobs() {
@@ -46,103 +61,103 @@ async function loadInitialJobs() {
     }
 }
 
-async function loadFeaturedJobs() {
-    try {
-        const jobs = await fetchJobs({ featured: true });
-        renderJobList(jobs, '.featured-jobs .row');
-    } catch (error) {
-        showToast('Error cargando empleos destacados', 'error');
-        // Cargar datos de ejemplo si la API no está disponible
-        loadSampleFeaturedJobs();
-    }
-}
+// async function loadFeaturedJobs() {
+//     try {
+//         const jobs = await fetchJobs({ featured: true });
+//         renderJobList(jobs, '.featured-jobs .row');
+//     } catch (error) {
+//         showToast('Error cargando empleos destacados', 'error');
+//         // Cargar datos de ejemplo si la API no está disponible
+//         loadSampleFeaturedJobs();
+//     }
+// }
 
-// Cargar empleos de ejemplo si la API no está disponible
-function loadSampleJobs() {
-    const sampleJobs = [
-        {
-            id: 1,
-            title: "Desarrollador Full Stack",
-            company: {
-                name: "Tech Solutions Inc.",
-                logo: "img/image.png",
-                verified: true
-            },
-            description: "Buscamos desarrollador full stack con experiencia en React, Node.js y MongoDB para unirse a nuestro equipo de desarrollo.",
-            modality: "Remoto",
-            level: "Senior",
-            contractType: "Tiempo completo",
-            location: "Bogotá / Remoto",
-            salary: {
-                min: 5000000,
-                max: 8000000
-            },
-            featured: true
-        },
-        {
-            id: 2,
-            title: "Ingeniero de DevOps",
-            company: {
-                name: "Cloud Innovations",
-                logo: "img/image.png",
-                verified: false
-            },
-            description: "Buscamos ingeniero de DevOps con experiencia en AWS, Docker y Kubernetes para automatizar nuestros procesos de despliegue.",
-            modality: "Híbrido",
-            level: "Semi-Senior",
-            contractType: "Tiempo completo",
-            location: "Medellín",
-            salary: {
-                min: 4000000,
-                max: 6000000
-            },
-            isNew: true
-        }
-    ];
+// // Cargar empleos de ejemplo si la API no está disponible
+// function loadSampleJobs() {
+//     const sampleJobs = [
+//         {
+//             id: 1,
+//             title: "Desarrollador Full Stack",
+//             company: {
+//                 name: "Tech Solutions Inc.",
+//                 logo: "img/image.png",
+//                 verified: true
+//             },
+//             description: "Buscamos desarrollador full stack con experiencia en React, Node.js y MongoDB para unirse a nuestro equipo de desarrollo.",
+//             modality: "Remoto",
+//             level: "Senior",
+//             contractType: "Tiempo completo",
+//             location: "Bogotá / Remoto",
+//             salary: {
+//                 min: 5000000,
+//                 max: 8000000
+//             },
+//             featured: true
+//         },
+//         {
+//             id: 2,
+//             title: "Ingeniero de DevOps",
+//             company: {
+//                 name: "Cloud Innovations",
+//                 logo: "img/image.png",
+//                 verified: false
+//             },
+//             description: "Buscamos ingeniero de DevOps con experiencia en AWS, Docker y Kubernetes para automatizar nuestros procesos de despliegue.",
+//             modality: "Híbrido",
+//             level: "Semi-Senior",
+//             contractType: "Tiempo completo",
+//             location: "Medellín",
+//             salary: {
+//                 min: 4000000,
+//                 max: 6000000
+//             },
+//             isNew: true
+//         }
+//     ];
     
-    renderJobList(sampleJobs);
-}
+//     renderJobList(sampleJobs);
+// }
 
-function loadSampleFeaturedJobs() {
-    const sampleJobs = [
-        {
-            id: 1,
-            title: "Desarrollador React Senior",
-            company: {
-                name: "Digital Creative",
-                logo: "img/image.png",
-                verified: true
-            },
-            description: "Buscamos desarrollador React senior con experiencia en TypeScript y Next.js para proyectos innovadores.",
-            modality: "Remoto",
-            level: "Senior",
-            contractType: "Tiempo completo",
-            location: "Colombia Remoto",
-            salary: {
-                min: 6000000,
-                max: 9000000
-            },
-            featured: true
-        },
-        {
-            id: 2,
-            title: "Arquitecto de Soluciones Cloud",
-            company: {
-                name: "Cloud Technologies",
-                logo: "img/image.png",
-                verified: true
-            },
-            description: "Buscamos arquitecto de soluciones con experiencia en diseño de sistemas escalables en AWS o Azure.",
-            modality: "Híbrido",
-            level: "Architect",
-            contractType: "Tiempo completo",
-            location: "Bogotá",
-            salary: {
-                min: 10000000,
-                max: 15000000
-            }
-        }
-    ];
+// function loadSampleFeaturedJobs() {
+//     const sampleJobs = [
+//         {
+//             id: 1,
+//             title: "Desarrollador React Senior",
+//             company: {
+//                 name: "Digital Creative",
+//                 logo: "img/image.png",
+//                 verified: true
+//             },
+//             description: "Buscamos desarrollador React senior con experiencia en TypeScript y Next.js para proyectos innovadores.",
+//             modality: "Remoto",
+//             level: "Senior",
+//             contractType: "Tiempo completo",
+//             location: "Colombia Remoto",
+//             salary: {
+//                 min: 6000000,
+//                 max: 9000000
+//             },
+//             featured: true
+//         },
+//         {
+//             id: 2,
+//             title: "Arquitecto de Soluciones Cloud",
+//             company: {
+//                 name: "Cloud Technologies",
+//                 logo: "img/image.png",
+//                 verified: true
+//             },
+//             description: "Buscamos arquitecto de soluciones con experiencia en diseño de sistemas escalables en AWS o Azure.",
+//             modality: "Híbrido",
+//             level: "Architect",
+//             contractType: "Tiempo completo",
+//             location: "Bogotá",
+//             salary: {
+//                 min: 10000000,
+//                 max: 15000000
+//             }
+//         }
+//     ];
     
-    renderJobList(sampleJobs, '.featured-jobs .row');
-}
+//     renderJobList(sampleJobs, '.featured-jobs .row');
+// }

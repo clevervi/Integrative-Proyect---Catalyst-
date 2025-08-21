@@ -1,117 +1,273 @@
 {
-    "jobs": [
+  "users": [
+    {
+      "id": "1",
+      "email": "demo@catalyst.com",
+      "password": "demo123",
+      "firstName": "Ana",
+      "lastName": "García",
+      "title": "Desarrolladora Backend",
+      "location": "Bogotá, Colombia",
+      "phone": "+57 123 456 7890",
+      "birthdate": "1990-05-15",
+      "gender": "female",
+      "bio": "Desarrolladora backend con 5 años de experiencia en Node.js y tecnologías cloud.",
+      "skills": [
+        "JavaScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "AWS",
+        "Docker"
+      ],
+      "experience": [
         {
-            "id": 1,
-            "title": "Desarrollador Full Stack",
-            "company": {
-                "name": "Tech Solutions Inc.",
-                "logo": "img/image.png",
-                "verified": true
-            },
-            "description": "Buscamos desarrollador full stack con experiencia en React, Node.js y MongoDB para unirse a nuestro equipo de desarrollo.",
-            "modality": "Remoto",
-            "level": "Senior",
-            "contractType": "Tiempo completo",
-            "location": "Bogotá / Remoto",
-            "salary": {
-                "min": 5000000,
-                "max": 8000000
-            },
-            "featured": true,
-            "requirements": [
-                "React",
-                "Node.js",
-                "MongoDB",
-                "Express",
-                "JavaScript"
-            ],
-            "benefits": [
-                "Seguro de salud",
-                "Flexibilidad horaria",
-                "Capacitaciones",
-                "Teletrabajo"
-            ],
-            "postedDate": "2024-01-15"
+          "id": 1,
+          "position": "Desarrolladora Backend Senior",
+          "company": "Tech Solutions",
+          "location": "Bogotá",
+          "startDate": "2022-01-01",
+          "endDate": null,
+          "current": true,
+          "description": "Desarrollo de APIs RESTful con Node.js y microservicios en AWS"
         },
         {
-            "id": 2,
-            "title": "Ingeniero de DevOps",
-            "company": {
-                "name": "Cloud Innovations",
-                "logo": "img/image.png",
-                "verified": false
-            },
-            "description": "Buscamos ingeniero de DevOps con experiencia en AWS, Docker y Kubernetes para automatizar nuestros procesos de despliegue.",
-            "modality": "Híbrido",
-            "level": "Semi-Senior",
-            "contractType": "Tiempo completo",
-            "location": "Medellín",
-            "salary": {
-                "min": 4000000,
-                "max": 6000000
-            },
-            "isNew": true,
-            "requirements": [
-                "AWS",
-                "Docker",
-                "Kubernetes",
-                "CI/CD",
-                "Terraform"
-            ],
-            "benefits": [
-                "Seguro de salud",
-                "Bonos de desempeño",
-                "Home office parcial"
-            ],
-            "postedDate": "2024-01-20"
+          "id": 2,
+          "position": "Desarrolladora Backend",
+          "company": "Digital Innovations",
+          "location": "Medellín",
+          "startDate": "2020-06-01",
+          "endDate": "2021-12-31",
+          "current": false,
+          "description": "Desarrollo de aplicaciones web con Express y MongoDB"
         }
-    ],
-    "trainings": [
+      ],
+      "education": [
         {
-            "id": 1,
-            "title": "React Avanzado: Patrones y Mejores Prácticas",
-            "instructor": "Juan Martínez",
-            "description": "Domina patrones avanzados de React, optimización de rendimiento y arquitectura de aplicaciones escalables.",
-            "category": "Frontend",
-            "level": "Avanzado",
-            "duration": "20 horas",
-            "price": 89900,
-            "originalPrice": 129900,
-            "rating": 4.8,
-            "reviews": 245,
-            "students": 1250,
-            "image": "https://via.placeholder.com/100x100?text=React"
-        },
-        {
-            "id": 2,
-            "title": "Python para Ciencia de Datos",
-            "instructor": "Moises Cantíllo",
-            "description": "Aprende a usar Python con Pandas, NumPy, Matplotlib y Scikit-learn para análisis de datos y machine learning.",
-            "category": "Data Science",
-            "level": "Intermedio",
-            "duration": "35 horas",
-            "price": 119900,
-            "rating": 4.9,
-            "reviews": 320,
-            "students": 2100,
-            "image": "https://via.placeholder.com/100x100?text=Python"
+          "id": 1,
+          "degree": "Ingeniería de Sistemas",
+          "institution": "Universidad Nacional",
+          "location": "Bogotá",
+          "startDate": "2015-01-01",
+          "endDate": "2020-12-01",
+          "description": "Especialización en desarrollo de software"
         }
-    ],
-    "users": [],
-    "applications": [],
-    "auth": {
-        "login": [
-            {
-                "email": "usuario@ejemplo.com",
-                "password": "password123",
-                "user": {
-                    "id": 1,
-                    "firstName": "Juan",
-                    "lastName": "Pérez",
-                    "email": "usuario@ejemplo.com"
-                },
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6Ikp1YW4gUMOpcmV6IiwiaWF0IjoxNTE2MjM5MDIyfQ"
-            }
-        ]
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "CV_Ana_Garcia.pdf",
+          "type": "cv",
+          "uploadDate": "2024-01-15"
+        }
+      ]
+    },
+    {
+      "id": "9a08"
     }
+  ],
+  "jobs": [
+    {
+      "id": "1",
+      "title": "Desarrollador Backend Senior",
+      "company": {
+        "id": 1,
+        "name": "Innovatech Solutions",
+        "logo": "../img/image.png",
+        "verified": true,
+        "industry": "Tecnología y Servicios",
+        "description": "Empresa líder en desarrollo de software con más de 10 años en el mercado. Especializados en soluciones empresariales.",
+        "size": "150",
+        "founded": "2012",
+        "website": "https://innovatech.example.com"
+      },
+      "description": "Buscamos desarrollador backend con experiencia en Node.js, TypeScript y arquitecturas de microservicios para unirse a nuestro equipo de desarrollo de plataforma SaaS.",
+      "requirements": [
+        "5+ años de experiencia en desarrollo backend",
+        "Experiencia con Node.js y TypeScript",
+        "Conocimiento de arquitecturas de microservicios",
+        "Experiencia con bases de datos SQL y NoSQL",
+        "Conocimiento de Docker y Kubernetes",
+        "Experiencia con AWS o Azure"
+      ],
+      "responsibilities": [
+        "Desarrollar y mantener APIs RESTful y GraphQL",
+        "Diseñar e implementar arquitecturas escalables",
+        "Colaborar con el equipo frontend para integrar funcionalidades",
+        "Optimizar el rendimiento de aplicaciones",
+        "Participar en code reviews y mentoría a desarrolladores junior"
+      ],
+      "benefits": [
+        "Salario competitivo",
+        "Horario flexible",
+        "Trabajo remoto",
+        "Seguro médico",
+        "Capacitaciones pagas",
+        "Bonos por desempeño"
+      ],
+      "modality": "Remoto",
+      "level": "Senior",
+      "contractType": "Tiempo completo",
+      "location": "Bogotá / Remoto",
+      "salary": {
+        "min": 8000000,
+        "max": 12000000,
+        "currency": "COP"
+      },
+      "postedDate": "2024-01-20T10:00:00Z",
+      "expiryDate": "2024-02-20T23:59:59Z",
+      "featured": true,
+      "isNew": true,
+      "applications": [],
+      "category": "Tecnología",
+      "skillsRequired": [
+        "Node.js",
+        "TypeScript",
+        "AWS",
+        "Docker",
+        "Kubernetes"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Ingeniero de DevOps",
+      "company": {
+        "id": 2,
+        "name": "Cloud Innovations",
+        "logo": "../img/image.png",
+        "verified": false,
+        "industry": "Tecnología Cloud",
+        "description": "Especialistas en soluciones cloud y infraestructura escalable.",
+        "size": "75",
+        "founded": "2018",
+        "website": "https://cloudinnovations.example.com"
+      },
+      "description": "Buscamos ingeniero de DevOps con experiencia en AWS, Docker y Kubernetes para automatizar nuestros procesos de despliegue.",
+      "requirements": [
+        "3+ años de experiencia en DevOps",
+        "Experiencia con AWS",
+        "Conocimiento de Docker y Kubernetes",
+        "Manejo de Terraform o CloudFormation",
+        "Experiencia con CI/CD pipelines"
+      ],
+      "responsibilities": [
+        "Automatizar procesos de despliegue",
+        "Mantener la infraestructura en la nube",
+        "Optimizar costos de infraestructura",
+        "Implementar prácticas de seguridad",
+        "Monitorear el performance de aplicaciones"
+      ],
+      "benefits": [
+        "Trabajo remoto",
+        "Horario flexible",
+        "Capacitaciones técnicas",
+        "Seguro de salud",
+        "Equipo de trabajo remoto"
+      ],
+      "modality": "Híbrido",
+      "level": "Semi-Senior",
+      "contractType": "Tiempo completo",
+      "location": "Medellín",
+      "salary": {
+        "min": 4000000,
+        "max": 6000000,
+        "currency": "COP"
+      },
+      "postedDate": "2024-01-18T14:30:00Z",
+      "expiryDate": "2024-02-18T23:59:59Z",
+      "featured": false,
+      "isNew": true,
+      "applications": [],
+      "category": "Tecnología",
+      "skillsRequired": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "CI/CD"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Desarrollador React Senior",
+      "company": {
+        "id": 3,
+        "name": "Digital Creative",
+        "logo": "../img/image.png",
+        "verified": true,
+        "industry": "Desarrollo Web",
+        "description": "Agencia digital especializada en experiencias web innovadoras.",
+        "size": "50",
+        "founded": "2015",
+        "website": "https://digitalcreative.example.com"
+      },
+      "description": "Buscamos desarrollador React senior con experiencia en TypeScript y Next.js para proyectos innovadores.",
+      "requirements": [
+        "4+ años de experiencia con React",
+        "Experiencia con TypeScript",
+        "Conocimiento de Next.js",
+        "Experiencia con estado global (Redux/Zustand)",
+        "Conocimiento de testing (Jest, React Testing Library)"
+      ],
+      "responsibilities": [
+        "Desarrollar componentes React reutilizables",
+        "Optimizar performance de aplicaciones web",
+        "Colaborar con diseñadores UX/UI",
+        "Implementar mejores prácticas de desarrollo",
+        "Mentoría a desarrolladores junior"
+      ],
+      "benefits": [
+        "Salario competitivo USD",
+        "Trabajo 100% remoto",
+        "Flexibilidad horaria",
+        "Presupuesto para equipamiento",
+        "Conferencias y capacitaciones"
+      ],
+      "modality": "Remoto",
+      "level": "Senior",
+      "contractType": "Tiempo completo",
+      "location": "América Latina Remoto",
+      "salary": {
+        "min": 6000000,
+        "max": 9000000,
+        "currency": "COP"
+      },
+      "postedDate": "2024-01-22T09:15:00Z",
+      "expiryDate": "2024-02-22T23:59:59Z",
+      "featured": true,
+      "isNew": false,
+      "applications": [],
+      "category": "Frontend",
+      "skillsRequired": [
+        "React",
+        "TypeScript",
+        "Next.js",
+        "CSS",
+        "Testing"
+      ]
+    }
+  ],
+  "applications": [],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Tecnología",
+      "slug": "tecnologia"
+    },
+    {
+      "id": "2",
+      "name": "Frontend",
+      "slug": "frontend"
+    },
+    {
+      "id": "3",
+      "name": "Backend",
+      "slug": "backend"
+    },
+    {
+      "id": "4",
+      "name": "DevOps",
+      "slug": "devops"
+    }
+  ]
 }

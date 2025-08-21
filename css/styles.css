@@ -116,31 +116,26 @@ img {
     margin-right: auto;
     margin-left: auto;
 }
-
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
     }
 }
-
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
     }
 }
-
 @media (min-width: 992px) {
     .container {
         max-width: 960px;
     }
 }
-
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
     }
 }
-
 @media (min-width: 1400px) {
     .container {
         max-width: 1320px;
@@ -182,7 +177,7 @@ img {
     font-weight: 500;
     padding: 0.5rem 1rem;
     transition: all var(--transition-fast);
-    color: var(--gray-800);
+    color: black;
     position: relative;
     font-size: 0.95rem;
     display: flex;
@@ -850,210 +845,4 @@ img {
 .placeholder-glow .placeholder {
     -webkit-animation: placeholder-glow 2s ease-in-out infinite alternate;
             animation: placeholder-glow 2s ease-in-out infinite alternate;
-}
-
-@-webkit-keyframes placeholder-glow {
-    from {
-        opacity: 0.5;
-    }
-    to {
-        opacity: 0.8;
-    }
-}
-
-@keyframes placeholder-glow {
-    from {
-        opacity: 0.5;
-    }
-    to {
-        opacity: 0.8;
-    }
-}
-
-/* Animaciones */
-@-webkit-keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-fade-in-up {
-    -webkit-animation: fadeInUp 0.6s ease-out forwards;
-            animation: fadeInUp 0.6s ease-out forwards;
-}
-
-@-webkit-keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-    }
-    70% {
-        transform: scale(1.02);
-        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
-    }
-    70% {
-        transform: scale(1.02);
-        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-    }
-}
-
-.btn-pulse {
-    -webkit-animation: pulse 1.5s infinite;
-            animation: pulse 1.5s infinite;
-}
-
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.job-card, .company-card, .benefit-card {
-    -webkit-animation: fadeIn 0.5s ease-out;
-            animation: fadeIn 0.5s ease-out;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-    .hero-banner {
-        padding: 7rem 0 5rem;
-    }
-    
-    .hero-banner h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-banner .lead {
-        font-size: 1.25rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-banner {
-        text-align: center;
-        padding: 6rem 0 4rem;
-    }
-    
-    .hero-content {
-        max-width: 100%;
-    }
-    
-    .hero-banner h1 {
-        font-size: 2.25rem;
-    }
-    
-    .hero-banner .lead {
-        font-size: 1.125rem;
-        margin-bottom: 2.5rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .search-box .input-group {
-        flex-direction: column;
-    }
-    
-    .search-box .form-control,
-    .search-box .form-select,
-    .search-box .btn {
-        border-radius: var(--border-radius-sm);
-        margin-bottom: 0.5rem;
-    }
-
-    .search-box .form-select {
-        border-top: none;
-        border-left: 1px solid var(--gray-200);
-    }
-}
-
-@media (max-width: 576px) {
-    .hero-banner {
-        padding: 4rem 0 2rem;
-        margin-bottom: 0;
-    }
-    
-    .hero-banner h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-banner .lead {
-        font-size: 1rem;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .search-box .input-group {
-        flex-direction: column;
-        background-color: transparent;
-        border: none;
-        box-shadow: none;
-        gap: 0.5rem;
-    }
-    
-    .search-box .form-control,
-    .search-box .form-select {
-        width: 100%;
-        margin-bottom: 0.5rem;
-    }
-    
-    .search-box .form-select {
-        border-left: 1px solid var(--gray-200);
-        border-top: none;
-    }
-    
-    .search-box .btn {
-        width: 100%;
-        margin: 0;
-    }
-
-    .footer {
-        padding: 4rem 0 2.5rem;
-    }
 }
